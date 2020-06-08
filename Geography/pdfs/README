@@ -1,0 +1,6 @@
+## Geographical distributions of _Platynereis_ species
+### Data accessed from OBIS (13th May 2020)
+
+The PDF files in this directory were generated using RStudio - code can be found in Geography/platynereis-species_dist.Rmd.
+
+# Author: mickey-spongebob
