@@ -1,3 +1,2 @@
 # platynereis-sequencing
-Detailing the sequencing of Platynereis genome(s)
-
+Detailing the sequencing projects of Platynereis genome(s)
