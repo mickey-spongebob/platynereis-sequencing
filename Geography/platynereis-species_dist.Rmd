@@ -1,0 +1,64 @@
+```{r, echo=FALSE}
+# Install/Load the relevant packages for analysis
+## These packages will download the robis R package utilised to analyse OBIS data
+
+## install.packages("devtools")
+## library(devtools)
+install_github("iobis/robis")
+library(robis)
+library(ggplot2)
+## install.packages("maps")
+library(maps)
+library(RColorBrewer)
+
+# Fetch all occurences for the Platynereis taxon
+platynereis_geo_dist <-
+  occurrence("Platynereis")
+
+## Get a list of the unique species id
+#platynereis_speciesid <-
+  #as.vector(print(unique(platynereis_geo_dist$speciesid)))
+
+# Mapped scatterplot using coordinates of the geographical occurence data
+world <- map_data("world")
+
+## 'All' Platynereis species
+platynereis_geo_dist_plot <- 
+  ggplot() + 
+  geom_polygon(data = world, aes(x = long, y = lat, group = group), fill = "#dddddd") +
+  geom_point(data = platynereis_geo_dist, aes(x = decimalLongitude, y = decimalLatitude)) + 
+  theme_void()
+
+## Platynereis dumerilii
+platynereis_dumerilii_geo_dist_plot <-
+  ggplot() +
+  geom_polygon(data = world, aes(x = long, y = lat, group = group), fill = "#dddddd") +
+  geom_point(data = subset(platynereis_geo_dist, scientificName == "Platynereis dumerilii"), 
+             aes(x = decimalLongitude, y = decimalLatitude), color = '#50d83b') + 
+  theme_void()
+  
+## Platynereis bicanaliculata
+platynereis_bicanaliculata_geo_dist_plot <-
+  ggplot() +
+  geom_polygon(data = world, aes(x = long, y = lat, group = group), fill = "#dddddd") +
+  geom_point(data = subset(platynereis_geo_dist, scientificName == "Platynereis bicanaliculata"), 
+             aes(x = decimalLongitude, y = decimalLatitude), color = '#ff0066') + 
+  theme_void()
+
+## Platynereis australis
+platynereis_australis_geo_dist_plot <-
+  ggplot() +
+  geom_polygon(data = world, aes(x = long, y = lat, group = group), fill = "#dddddd") +
+  geom_point(data = subset(platynereis_geo_dist, scientificName == "Platynereis australis"), 
+             aes(x = decimalLongitude, y = decimalLatitude), color = '#0099cc') + 
+  theme_void()
+
+## Platynereis magalhaensis
+platynereis_magalhaensis_geo_dist_plot <-
+  ggplot() +
+  geom_polygon(data = world, aes(x = long, y = lat, group = group), fill = "#dddddd") +
+  geom_point(data = subset(platynereis_geo_dist, scientificName == "Platynereis magalhaensis"), 
+             aes(x = decimalLongitude, y = decimalLatitude), color = '#f0b90f') + 
+  theme_void()
+
+```
